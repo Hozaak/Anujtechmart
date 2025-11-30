@@ -1,0 +1,141 @@
+/* Page Layout */
+.checkout-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.checkout-container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Form and Summary Sections */
+.shipping-form-section, .order-summary-section {
+    flex: 1; 
+    padding: 30px;
+    min-width: 0;
+}
+
+.shipping-form-section h2, .order-summary-section h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+/* Form Styling */
+.shipping-form-section form input, 
+.shipping-form-section form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.shipping-form-section form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.save-details-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+/* Saved Details Display */
+.details-saved {
+    padding: 10px;
+    background-color: #e6f7ff; /* Light blue background */
+    border: 1px solid #b3e0ff;
+    border-radius: 4px;
+}
+
+.details-saved p {
+    margin-bottom: 5px;
+}
+
+.edit-link {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+/* Order Summary Styling */
+.summary-details {
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    padding: 10px 0;
+}
+
+.final-total {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    border-top: 2px solid var(--secondary-color);
+    margin-top: 10px;
+}
+
+/* Payment Gateway Section */
+.payment-gateway-area h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.cashfree-button-container {
+    padding: 20px;
+    text-align: center;
+    border: 1px dashed var(--primary-color);
+    border-radius: 8px;
+    background-color: #f0f8ff; /* Light background for security cue */
+}
+
+/* Placeholder Button Style */
+.payment-btn-placeholder {
+    width: 80%;
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #ff8c00; /* Cashfree/Orange accent */
+    border: none;
+    margin-bottom: 10px;
+}
+
+.trust-msg {
+    font-weight: 600;
+    color: #4CAF50; /* Green for security */
+    margin-bottom: 5px;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.disclaimer {
+    text-align: center;
+    margin-top: 20px;
+    color: #dc3545;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+}
