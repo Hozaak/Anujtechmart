@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import './Login.css'; // We will create this CSS file next
+import './Login.css';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -9,19 +9,20 @@ const Login = () => {
     const [loginError, setLoginError] = useState(null);
     const [isLoggingIn, setIsLoggingIn] = useState(false);
     
-    const { login, isAuthenticated } = useAuth();
+    const { login, isAuthenticated, user } = useAuth(); // Added 'user'
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Determine where to redirect after successful login (default to home)
-    const from = location.state?.from?.pathname || "/";
-    
-    // If already authenticated, redirect immediately
+    // Determine where to redirect after successful login
+    const adminLink = '/admin';
+    const userLink = '/profile'; // New user dashboard route
+    const redirectPath = user?.role === 'admin' ? adminLink : userLink;
+
     useEffect(() => {
         if (isAuthenticated) {
-            navigate(from, { replace: true });
+            navigate(redirectPath, { replace: true });
         }
-    }, [isAuthenticated, navigate, from]);
+    }, [isAuthenticated, navigate, redirectPath]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,11 +30,9 @@ const Login = () => {
         setIsLoggingIn(true);
 
         try {
-            // Attempt to log in using the Auth Context function
             await login(username, password); 
-            // The useEffect hook above will handle the navigation upon success
+            // Navigation handled by useEffect
         } catch (error) {
-            // Handle login failure (e.g., Invalid credentials)
             setLoginError(error.message || 'Login failed. Please check your credentials.');
         } finally {
             setIsLoggingIn(false);
@@ -41,15 +40,14 @@ const Login = () => {
     };
 
     if (isAuthenticated) {
-        // Render nothing or a quick message while waiting for the redirect effect
-        return <div className="login-page">Redirecting...</div>;
+        return <div className="login-page">Redirecting to Dashboard...</div>;
     }
 
     return (
         <div className="login-page">
             <div className="login-card card">
                 <h1 className="login-title">Account Login</h1>
-                <p className="login-subtitle">Access your account or Admin Dashboard.</p>
+                <p className="login-subtitle">Use your credentials to access your personalized dashboard or the Admin panel.</p>
 
                 <form onSubmit={handleSubmit} className="login-form">
                     
@@ -62,7 +60,7 @@ const Login = () => {
                             id="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            placeholder="e.g., lucky@admin.com or testuser@guest.com"
+                            placeholder="Enter your email"
                             required
                         />
                     </div>
