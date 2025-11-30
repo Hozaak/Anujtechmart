@@ -30,6 +30,13 @@ body {
     scroll-behavior: smooth;
 }
 
+/* ENHANCEMENT: Smooth out text selection/flicker */
+::selection {
+    background: var(--primary-color);
+    color: white;
+    text-shadow: none;
+}
+
 /* Main Application Layout Wrapper */
 .App {
     display: flex;
