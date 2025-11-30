@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
@@ -9,6 +9,7 @@ const Header = () => {
     const { isAuthenticated, logout, user, hasRole } = useAuth();
     const { cartCount } = useCart();
     const navigate = useNavigate();
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // For mobile hamburger menu
 
     const handleLogout = () => {
         logout();
@@ -16,64 +17,84 @@ const Header = () => {
     };
 
     const isAdmin = hasRole('admin');
+    const userDisplayName = user ? user.username.split('@')[0] : 'Guest';
+
+    const accountLink = isAuthenticated ? (isAdmin ? '/admin' : '/profile') : '/login';
 
     return (
-        <header className="header">
-            <div className="header-container">
-                
-                {/* 1. Logo/Brand Name (Logo/Image placeholder needed in public/assets/ ) */}
-                <Link to="/" className="logo logo-with-image">
-                    {/* Assuming logo.jpg is in public/assets/ */}
-                    <img src="/assets/logo.jpg" alt="Anuj E-Store Logo" className="logo-img" /> 
-                    Anuj E-Store
-                </Link>
+        <>
+            {/* Top Offer Bar */}
+            <div className="top-offer-bar">
+                Winters Sale Live! Enjoy FREE home delivery and up to 40% OFF on prepaid & partial payment orders!
+            </div>
 
-                {/* 2. Main Navigation Links (Matching Image Layout) */}
-                <nav className="nav-links">
-                    <Link to="/" className="nav-item">Home</Link>
-                    <Link to="/category/mobile" className="nav-item">Mobile</Link>
-                    <Link to="/category/audio" className="nav-item">Audio</Link>
-                    <Link to="/category/trending" className="nav-item">Trending</Link>
-                    <Link to="/cart" className="nav-item cart-icon">
-                        Cart 
-                        {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+            <header className="main-header">
+                <div className="header-top-container">
+                    
+                    {/* Hamburger Menu (Mobile Only) */}
+                    <button className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        ☰
+                    </button>
+
+                    {/* 1. Logo/Brand Name (Using image logo.jpg) */}
+                    <Link to="/" className="logo logo-with-image">
+                        <img src="/assets/logo.jpg" alt="Anuj E-Store Logo" className="logo-img" /> 
+                        {/* Optionally hide text logo on desktop */}
                     </Link>
-                </nav>
 
-                {/* 3. Authentication Section (User-centric features) */}
-                <div className="auth-section">
-                    {isAuthenticated ? (
-                        <>
-                            {/* User Menu/Profile Link */}
-                            <Link to="/profile" className="btn-secondary profile-btn">
-                                My Account
+                    {/* 2. Search Bar (Similar to the screenshot) */}
+                    <div className="search-bar-container">
+                        <input type="text" placeholder="Search..." className="search-input" />
+                        <select className="search-category-select">
+                            <option value="all">All categories</option>
+                            <option value="mobile">{CATEGORIES.MOBILE.replace(' Section', '')}</option>
+                            <option value="audio">{CATEGORIES.AUDIO.replace(' Series', '')}</option>
+                            <option value="trending">{CATEGORIES.TRENDING.replace(' Section', '')}</option>
+                        </select>
+                        <button className="search-button" aria-label="Search">
+                            🔍
+                        </button>
+                    </div>
+
+                    {/* 3. Account/Cart Section */}
+                    <div className="account-cart-section">
+                        <div className="user-auth-area">
+                            <Link to={accountLink} className="auth-link">
+                                {isAuthenticated ? 'My account' : 'Login / Signup'}
                             </Link>
                             
-                            {/* Only show ADMIN button for logged-in Admins */}
-                            {isAdmin && (
-                                <Link to="/admin" className="btn-primary admin-btn-highlight">
-                                    Admin Dashboard
-                                </Link>
-                            )}
-                            <button onClick={handleLogout} className="btn-secondary logout-btn">
-                                Logout
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            {/* NEW: Track Order Link (User Feature) */}
-                            <Link to="/track-order" className="btn-secondary track-btn">
-                                Track Order
-                            </Link>
-                            {/* Login Button (Now for ALL users/admins) */}
-                            <Link to="/login" className="btn-primary login-btn-highlight">
-                                User Login
-                            </Link>
-                        </>
-                    )}
+                            {/* Track Order is moved to the bottom nav bar for general access */}
+                        </div>
+
+                        {/* Cart Icon */}
+                        <Link to="/cart" className="cart-icon-link">
+                            <span className="cart-icon-symbol">🛒</span>
+                            <span className="cart-text">Cart</span>
+                            {cartCount > 0 && <span className="cart-count-badge">{cartCount}</span>}
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        </header>
+
+                {/* Bottom Navigation Bar (Visible on Desktop, opens via Hamburger on Mobile) */}
+                <nav className={`bottom-nav-bar ${isMenuOpen ? 'is-open' : ''}`}>
+                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/category/all" className="nav-link">All Products</Link>
+                    <Link to="/category/trending" className="nav-link">Trending</Link>
+                    <Link to="/category/mobile" className="nav-link">Mobile</Link>
+                    <Link to="/category/audio" className="nav-link">Audio</Link>
+                    
+                    {/* PROFESSIONAL FEATURE: Track Order Link (User Feature) */}
+                    <Link to="/track-order" className="nav-link track-order-link">Track Order</Link>
+                    
+                    <Link to="/contact" className="nav-link">Contact</Link>
+                    
+                    {/* Admin Link for logged-in Admins */}
+                    {isAuthenticated && isAdmin && (
+                        <Link to="/admin" className="nav-link admin-nav-link">Admin</Link>
+                    )}
+                </nav>
+            </header>
+        </>
     );
 };
 
