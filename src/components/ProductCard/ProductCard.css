@@ -66,12 +66,12 @@
     font-weight: 600;
     margin-bottom: 5px;
     
-    /* FIX FOR ALIGNMENT/FLICKERING: Guarantee consistent 2-line height */
+    /* FIX FOR STABILITY: Guarantee consistent 2-line height */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 2.4em; /* Forces height for two lines of text */
+    height: 2.4em; /* Forces height for two lines of text to prevent jump */
 }
 
 /* Price Display (Minimal & Clear) */
