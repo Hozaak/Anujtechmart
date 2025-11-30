@@ -4,15 +4,15 @@ export const DUMMY_PRODUCTS = [
     // 1. Mobile (Trending) - High Value Discount
     {
         id: 'p1',
-        name: 'Quantum Leap 5G Smartphone',
+        name: 'Ultimate Wireless Earbuds Pro with Noise Cancelling and Smart Case',
         category: 'mobile',
-        price: 18999,
-        originalPrice: 24999, // Higher Original Price
-        offer: 'Flat 24% OFF! Best Seller.',
-        description: 'Blazing fast Snapdragon 8 Gen 2 processor, 108MP camera, and a minimal, seamless glass design. Trustworthy performance guarantee.',
+        price: 499,
+        originalPrice: 1999, // Higher Original Price
+        offer: 'Flat 75% OFF! Best Seller.',
+        description: 'Earbuds Pro Is TRUE WIRELESS STEREO that offers you the best experience in terms of sound quality and ease of use.',
         rating: 4.8,
-        stock: 50,
-        image: 'assets/product_images/mobile_1.jpg',
+        stock: 18,
+        image: 'assets/earbuds.jpg',
         isTrending: true,
     },
     // 2. Audio (Trending) - Clear Offer/Freebie (Earbuds + T-Case)
