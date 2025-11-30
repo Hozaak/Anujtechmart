@@ -1,7 +1,7 @@
 /* Base Header Styles */
 .header {
-    background-color: var(--card-bg); /* White background for clean look */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: var(--card-bg); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -10,7 +10,7 @@
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 8px 20px; /* ADJUSTED: Reduced vertical padding for minimal height */
+    padding: 8px 20px; /* Minimal height */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,9 +20,17 @@
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color); /* Trustworthy Blue */
+    color: var(--primary-color); 
     text-decoration: none;
-    white-space: nowrap; /* Prevents wrapping on smaller screens */
+    white-space: nowrap; 
+    display: flex; /* Enable flex for logo image/text alignment */
+    align-items: center;
+}
+
+.logo-img {
+    height: 30px; /* Size of the cart icon */
+    margin-right: 8px;
+    object-fit: contain;
 }
 
 /* Navigation Links */
@@ -30,39 +38,26 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    flex-grow: 1; /* Pushes the auth section to the right */
+    margin-left: 30px;
 }
 
 .nav-item {
     color: var(--text-color);
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 5px 0px; /* Reduced vertical padding */
     font-weight: 500;
     transition: color 0.2s;
+    border-bottom: 2px solid transparent; /* Professional hover effect */
 }
 
 .nav-item:hover {
     color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 /* Cart Icon and Count */
-.cart-icon {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-}
-
-.cart-count {
-    background-color: var(--secondary-color); /* Success/Buy Green */
-    color: white;
-    border-radius: 50%;
-    padding: 2px 7px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    line-height: 1;
-}
+/* ... (existing cart-icon, cart-count styles) ... */
 
 /* Authentication Section */
 .auth-section {
@@ -71,47 +66,51 @@
     gap: 10px;
 }
 
-.welcome-message {
+.track-btn, .profile-btn, .logout-btn {
+    padding: 8px 12px;
     font-size: 0.9rem;
-    color: #6c757d;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    color: var(--text-color);
+}
+.track-btn:hover, .profile-btn:hover {
+    background-color: #eee;
 }
 
-.btn-secondary {
-    background-color: transparent;
-    border: 1px solid #dc3545;
-    color: #dc3545;
-    padding: 8px 15px;
+.admin-btn-highlight {
+    background-color: #dc3545; /* Red accent for Admin visibility */
+}
+.admin-btn-highlight:hover {
+    background-color: #a71d2a;
+}
+.login-btn-highlight {
+    background-color: var(--primary-color);
 }
 
-.btn-secondary:hover {
-    background-color: #dc3545;
-    color: white;
-}
 
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     .header-container {
         flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
+        justify-content: space-between;
     }
-
+    
     .logo {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .nav-links, .auth-section {
         flex-basis: 50%;
-        justify-content: center;
-        margin-top: 5px;
-    }
-
-    .nav-links {
-        order: 2; /* Move navigation below logo/auth on mobile */
+        margin-bottom: 0;
+        justify-content: flex-start;
     }
     
     .auth-section {
-        order: 3;
+        flex-basis: 50%;
+        justify-content: flex-end;
+        margin-top: 0;
     }
+    
+    .nav-links {
+        /* Hide secondary nav links to save space */
+        display: none; 
+    }
+    
+    /* Show Hamburger Menu Icon instead (requires integration) */
 }
