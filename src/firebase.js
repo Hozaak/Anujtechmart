@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; // Import Firebase Authentication
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics"; // REMOVED ANALYTICS IMPORT - LIKELY CAUSE OF WHITE SCREEN
 
 // Your web app's Firebase configuration (provided by user)
 const firebaseConfig = {
@@ -18,6 +18,6 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Services we need
 const auth = getAuth(app); // EXPORT AUTH SERVICE
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app); // ANALYTICS INITIALIZATION COMMENTED OUT
 
-export { app, auth, analytics };
+export { app, auth /*, analytics */ }; // Removed analytics from export
