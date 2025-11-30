@@ -1,26 +1,33 @@
-// ... (imports)
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Footer.css'; 
 
 const Footer = () => {
-    // Get the current year for the copyright notice
     const currentYear = new Date().getFullYear();
 
     return (
         <footer className="footer">
             <div className="footer-container">
                 
-                {/* ... (Sections 1 & 2) ... */}
+                {/* 1. Quick Links Section */}
+                {/* ... (Existing Quick Links) ... */}
 
-                {/* 3. Contact Info/Brand Message */}
-                <div className="footer-section contact-info">
-                    <h4>Contact</h4>
-                    <p>Email: support@anujestore.com</p>
-                    <p>Ph: +91 98765 43210</p>
-                    <p className="trust-message">
-                        Anuj E-Store: Minimal. Reliable. Guaranteed.
-                        <br/>
-                        <span style={{fontSize: '0.8rem', color: '#aaa'}}>Serving Customers Since 2020</span> 
-                    </p>
+                {/* 2. Customer Engagement/Reviews (NEW SECTION) */}
+                <div className="footer-section engagement">
+                    <h4>Customer Zone</h4>
+                    <ul>
+                        <li><Link to="/profile">My Account / Orders</Link></li>
+                        <li><Link to="/review-us">⭐️ Write a Review</Link></li>
+                        <li><Link to="/faqs">FAQs</Link></li>
+                        <li><Link to="/contact">Contact Support</Link></li>
+                    </ul>
                 </div>
+                
+                {/* 3. Policies & Legal Section (Existing Legal) */}
+                {/* ... */}
+                
+                {/* 4. Contact Info/Brand Message (Existing Contact Info) */}
+                {/* ... */}
             </div>
 
             {/* 4. Copyright Bar */}
