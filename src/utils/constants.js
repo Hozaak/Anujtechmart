@@ -15,7 +15,7 @@ export const DUMMY_PRODUCTS = [
         image: 'assets/product_images/mobile_1.jpg',
         isTrending: true,
     },
-    // 2. Audio (Trending) - Clear Offer/Freebie
+    // 2. Audio (Trending) - Clear Offer/Freebie (Earbuds + T-Case)
     {
         id: 'p2',
         name: 'EchoMax Pro Wireless Earbuds',
@@ -143,13 +143,18 @@ export const DUMMY_PRODUCTS = [
     },
 ];
 
-// Admin Credentials
+// Admin Credentials (as requested: lucky and anuj)
 export const ADMIN_USERS = [
     { username: 'lucky@admin.com', password: 'adminpassword123', role: 'admin' },
     { username: 'anuj@admin.com', password: 'adminpassword456', role: 'admin' }
 ];
 
-// Product Categories for Routing/Filtering
+// Regular User for testing (simulated)
+export const REGULAR_USERS = [
+    { username: 'testuser@guest.com', password: 'guest123', role: 'user' }
+];
+
+// Product Categories for Routing/Filtering (as requested)
 export const CATEGORIES = {
     TRENDING: 'Trending Section',
     MOBILE: 'Mobile Section',
