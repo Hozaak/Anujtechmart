@@ -1,0 +1,123 @@
+/* Base Dashboard Layout */
+.admin-dashboard {
+    padding: 20px 0;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #4CAF50; /* A color often associated with success/admin */
+    margin-bottom: 10px;
+}
+
+.welcome-message {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.admin-layout-container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Sections */
+.add-product-section, .product-list-section {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Form Styling */
+.admin-form input:not([type="checkbox"]), 
+.admin-form textarea, 
+.admin-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.admin-form textarea {
+    resize: vertical;
+}
+
+.form-group-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group-row input, .form-group-row select {
+    flex: 1;
+}
+
+/* Checkbox Styling */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input {
+    width: auto;
+}
+
+.admin-submit-btn {
+    width: 100%;
+    background-color: #4CAF50;
+}
+
+.admin-submit-btn:hover {
+    background-color: #388e3c;
+}
+
+.admin-message {
+    padding: 15px;
+    background-color: #e6ffed;
+    color: #388e3c;
+    border: 1px solid #388e3c;
+    border-radius: 4px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Product Inventory List */
+.product-inventory-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.95rem;
+}
+
+.inventory-item:last-child {
+    border-bottom: none;
+}
+
+.inventory-note {
+    margin-top: 20px;
+    font-style: italic;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .admin-layout-container {
+        flex-direction: column;
+    }
+    .form-group-row {
+        flex-direction: column;
+    }
+}
