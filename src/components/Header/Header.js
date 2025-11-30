@@ -32,20 +32,20 @@ const Header = () => {
                 <div className="header-top-container">
                     
                     {/* Hamburger Menu (Mobile Only) */}
-                    <button className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle navigation">
                         ☰
                     </button>
 
-                    {/* 1. Logo/Brand Name (Using image logo.jpg) */}
+                    {/* 1. Logo/Brand Name (FIXED PATH) */}
                     <Link to="/" className="logo logo-with-image">
-                        <img src="/assets/logo.jpg" alt="Anuj E-Store Logo" className="logo-img" /> 
-                        {/* Optionally hide text logo on desktop */}
+                        {/* The uploaded file name is 'logo.jpg', so we use that path */}
+                        <img src="/assets/logo.jpg" alt="Anuj Tech Mart Logo" className="logo-img" /> 
                     </Link>
 
                     {/* 2. Search Bar (Similar to the screenshot) */}
                     <div className="search-bar-container">
                         <input type="text" placeholder="Search..." className="search-input" />
-                        <select className="search-category-select">
+                        <select className="search-category-select" aria-label="Select Category">
                             <option value="all">All categories</option>
                             <option value="mobile">{CATEGORIES.MOBILE.replace(' Section', '')}</option>
                             <option value="audio">{CATEGORIES.AUDIO.replace(' Series', '')}</option>
@@ -63,7 +63,8 @@ const Header = () => {
                                 {isAuthenticated ? 'My account' : 'Login / Signup'}
                             </Link>
                             
-                            {/* Track Order is moved to the bottom nav bar for general access */}
+                            {/* Track Order is now in the bottom nav bar */}
+                            {/* The second line from the screenshot (My Account) is omitted for clean space */}
                         </div>
 
                         {/* Cart Icon */}
