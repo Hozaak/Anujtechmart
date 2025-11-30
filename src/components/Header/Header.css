@@ -1,116 +1,201 @@
-/* Base Header Styles */
-.header {
+/* Top Offer Bar */
+.top-offer-bar {
+    background-color: #1A374D; /* Dark Teal/Blue from screenshot */
+    color: white;
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.main-header {
     background-color: var(--card-bg); 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-.header-container {
+.header-top-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 8px 20px; /* Minimal height */
+    padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
-/* Logo Styling */
+/* 1. Logo Styling */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color); 
     text-decoration: none;
-    white-space: nowrap; 
-    display: flex; /* Enable flex for logo image/text alignment */
+    display: flex; 
     align-items: center;
+    flex-shrink: 0;
 }
-
 .logo-img {
-    height: 30px; /* Size of the cart icon */
-    margin-right: 8px;
+    height: 40px; /* Larger logo size */
+    margin-right: 10px;
     object-fit: contain;
 }
 
-/* Navigation Links */
-.nav-links {
+/* 2. Search Bar */
+.search-bar-container {
     display: flex;
-    gap: 20px;
-    align-items: center;
-    flex-grow: 1; /* Pushes the auth section to the right */
-    margin-left: 30px;
+    flex-grow: 1;
+    margin: 0 30px;
+    max-width: 600px;
+    border: 1px solid #ccc; /* Border around the whole search area */
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.nav-item {
+.search-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-category-select {
+    padding: 0 10px;
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.search-button {
+    background-color: #1A374D; /* Dark search button background */
+    color: white;
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: none;
+    flex-shrink: 0;
+    border-radius: 0;
+}
+
+/* 3. Account/Cart Section */
+.account-cart-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.user-auth-area {
+    text-align: right;
+    font-size: 0.9rem;
+    padding-right: 15px; /* Margin to separate from cart */
+    border-right: 1px solid #eee;
+}
+
+.auth-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Cart Icon */
+.cart-icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: var(--text-color);
     text-decoration: none;
-    padding: 5px 0px; /* Reduced vertical padding */
+    position: relative;
+}
+.cart-icon-symbol {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.cart-text {
+    font-size: 0.8rem;
     font-weight: 500;
-    transition: color 0.2s;
-    border-bottom: 2px solid transparent; /* Professional hover effect */
+}
+.cart-count-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--error-color);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
 }
 
-.nav-item:hover {
+/* Bottom Navigation */
+.bottom-nav-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    gap: 25px;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+    font-size: 0.95rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    padding: 5px 0;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+}
+.nav-link:hover {
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
 }
-
-/* Cart Icon and Count */
-/* ... (existing cart-icon, cart-count styles) ... */
-
-/* Authentication Section */
-.auth-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.admin-nav-link {
+    color: var(--error-color);
+    font-weight: 700;
 }
 
-.track-btn, .profile-btn, .logout-btn {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    border: 1px solid #ccc;
-    background-color: #f8f8f8;
-    color: var(--text-color);
-}
-.track-btn:hover, .profile-btn:hover {
-    background-color: #eee;
-}
-
-.admin-btn-highlight {
-    background-color: #dc3545; /* Red accent for Admin visibility */
-}
-.admin-btn-highlight:hover {
-    background-color: #a71d2a;
-}
-.login-btn-highlight {
-    background-color: var(--primary-color);
+/* Mobile: Hamburger and Hidden Menu */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 15px;
 }
 
-
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-    .header-container {
-        flex-wrap: wrap;
-        justify-content: space-between;
+@media (max-width: 992px) {
+    .header-top-container {
+        padding: 10px 15px;
     }
-    
-    .logo {
-        flex-basis: 50%;
-        margin-bottom: 0;
-        justify-content: flex-start;
+    .search-bar-container {
+        display: none; /* Hide complex search bar on small screens */
     }
-    
-    .auth-section {
-        flex-basis: 50%;
-        justify-content: flex-end;
-        margin-top: 0;
+    .hamburger-menu {
+        display: block; /* Show hamburger */
     }
-    
-    .nav-links {
-        /* Hide secondary nav links to save space */
-        display: none; 
+    .logo-img {
+        height: 30px;
     }
-    
-    /* Show Hamburger Menu Icon instead (requires integration) */
+    .bottom-nav-bar {
+        /* Mobile Menu styles */
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        background: #f8f9fa;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+        padding: 15px 20px;
+    }
+    .bottom-nav-bar.is-open {
+        display: flex; /* Show menu when hamburger is clicked */
+    }
+    .account-cart-section {
+        gap: 10px;
+    }
 }
