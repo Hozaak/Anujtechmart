@@ -1,0 +1,117 @@
+/* Base Header Styles */
+.header {
+    background-color: var(--card-bg); /* White background for clean look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color); /* Trustworthy Blue */
+    text-decoration: none;
+    white-space: nowrap; /* Prevents wrapping on smaller screens */
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-item {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+/* Cart Icon and Count */
+.cart-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cart-count {
+    background-color: var(--secondary-color); /* Success/Buy Green */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    line-height: 1;
+}
+
+/* Authentication Section */
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome-message {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 8px 15px;
+}
+
+.btn-secondary:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .nav-links, .auth-section {
+        flex-basis: 50%;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .nav-links {
+        order: 2; /* Move navigation below logo/auth on mobile */
+    }
+    
+    .auth-section {
+        order: 3;
+    }
+}
