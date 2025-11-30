@@ -44,11 +44,12 @@ const ProductCard = ({ product }) => {
                 {/* Product Image */}
                 <div className="product-image-container">
                     <img 
-                        src={image} 
+                        // FIX: Added leading slash (/) to ensure correct path resolution from the public directory
+                        src={`/${image}`} 
                         alt={name} 
                         className="product-image" 
                         // Fallback in case of image load error
-                        onError={(e) => { e.target.onError = null; e.target.src = 'assets/placeholder.jpg'; }}
+                        onError={(e) => { e.target.onError = null; e.target.src = '/assets/placeholder.jpg'; }}
                     />
                     {/* Discount Badge for immediate impact */}
                     {discountPercent > 0 && (
