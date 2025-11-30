@@ -1,0 +1,63 @@
+/* Page Container */
+.not-found-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 40px 20px;
+}
+
+/* Content Card */
+.not-found-content {
+    max-width: 500px;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+
+.error-code {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #dc3545; /* Red for Error */
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.error-message-title {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.error-description {
+    color: #6c757d;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.error-guidance {
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.home-link-btn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.contact-link {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.contact-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.contact-link a:hover {
+    text-decoration: underline;
+}
