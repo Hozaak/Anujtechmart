@@ -4,7 +4,7 @@ import './Footer.css'; // We'll create this CSS file next
 
 const Footer = () => {
     // Get the current year for the copyright notice
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear(); //
 
     return (
         <footer className="footer">
@@ -38,7 +38,8 @@ const Footer = () => {
                     <p>Email: support@anujestore.com</p>
                     <p>Ph: +91 98765 43210</p>
                     <p className="trust-message">
-                        **Anuj E-Store:** Minimal. Reliable. Guaranteed.
+                        {/* REMOVED ** */}
+                        Anuj E-Store: Minimal. Reliable. Guaranteed.
                     </p>
                 </div>
             </div>
